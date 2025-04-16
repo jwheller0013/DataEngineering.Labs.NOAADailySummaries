@@ -1,7 +1,7 @@
 import urllib.request
 import json
 
-url = "https://www.ncdc.noaa.gov/cdo-web/api/v2/locations/"
+url = "https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=FIPS:10003&startdate=2018-01-01&enddate=2018-01-31"
 tok = "pLPWsbxSowNQurrZleAiABCJGkuJepeg"
 limit = 1000
 
@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     for i in range(40):
         offset = i * offset_increment
-        api_url = f"{url}?limit={limit}&offset={offset}"
+        api_url = f"{url}&limit={limit}&offset={offset}"
         filename = f"locations_{i}.json"
         make_request(api_url, filename, headers)
         print(f"Attempting to create file: {filename}")
